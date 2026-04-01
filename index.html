@@ -1,0 +1,1327 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Maître Jonathan Prebon — Avocat fiscaliste</title>
+<meta name="description" content="Maître Jonathan Prebon, avocat spécialisé en droit fiscal, entreprises en difficulté et droit douanier. Rigueur fiscale, clarté stratégique.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --navy: #0D1B2A;
+  --ivory: #F9F7F4;
+  --blue-mid: #3B5F8A;
+  --blue-pale: #D6E4F0;
+  --gold-accent: #B8A16B;
+  --gold-light: rgba(184,161,107,.12);
+  --text-main: #1A1A2E;
+  --text-light: #6B7280;
+  --header-h: 80px;
+  --ease-out-expo: cubic-bezier(.22,1,.36,1);
+  --section-pad: clamp(80px, 10vw, 120px);
+}
+
+html { scroll-behavior: smooth; font-size: 16px; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  color: var(--text-main);
+  background: var(--ivory);
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+::selection { background: var(--gold-light); color: var(--navy); }
+
+/* ── Utility ── */
+.container { max-width: 1080px; margin: 0 auto; padding: 0 clamp(20px, 4vw, 40px); }
+img { max-width: 100%; display: block; }
+
+/* ── Header ── */
+.site-header {
+  position: fixed; top: 0; left: 0; width: 100%; z-index: 100;
+  background: rgba(249,247,244,0);
+  backdrop-filter: blur(0px);
+  -webkit-backdrop-filter: blur(0px);
+  border-bottom: 1px solid transparent;
+  transition: all .5s var(--ease-out-expo);
+  height: var(--header-h);
+}
+.site-header.scrolled {
+  height: 62px;
+  background: rgba(249,247,244,.95);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom-color: rgba(13,27,42,.06);
+}
+.header-inner {
+  display: flex; align-items: center; justify-content: space-between;
+  height: 100%; max-width: 1080px; margin: 0 auto; padding: 0 clamp(20px, 4vw, 40px);
+}
+.header-brand {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 400; font-size: 1.25rem; color: var(--ivory);
+  text-decoration: none; letter-spacing: .02em;
+  transition: all .5s var(--ease-out-expo);
+}
+.site-header.scrolled .header-brand {
+  font-size: 1.1rem; color: var(--navy);
+}
+.header-nav { display: flex; gap: 32px; align-items: center; }
+.header-nav a {
+  font-size: .72rem; font-weight: 500; color: rgba(249,247,244,.55);
+  text-decoration: none; letter-spacing: .12em; text-transform: uppercase;
+  position: relative; transition: color .35s var(--ease-out-expo);
+  padding: 4px 0;
+}
+.site-header.scrolled .header-nav a { color: var(--text-light); }
+.header-nav a::after {
+  content: ''; position: absolute; bottom: -2px; left: 0; width: 0; height: 1px;
+  background: var(--gold-accent); transition: width .35s var(--ease-out-expo);
+}
+.header-nav a:hover { color: var(--ivory); }
+.site-header.scrolled .header-nav a:hover { color: var(--navy); }
+.header-nav a:hover::after { width: 100%; }
+.header-nav a.active::after { width: 100%; }
+
+.menu-toggle {
+  display: none; background: none; border: none; cursor: pointer; padding: 6px;
+}
+.menu-toggle svg { width: 22px; height: 22px; stroke: var(--ivory); transition: stroke .4s; }
+.site-header.scrolled .menu-toggle svg { stroke: var(--navy); }
+
+/* Mobile nav */
+@media (max-width: 768px) {
+  .header-nav {
+    position: fixed; top: 0; right: -100%; width: 300px; height: 100dvh;
+    background: var(--navy); flex-direction: column; justify-content: center;
+    gap: 36px; padding: 48px; transition: right .45s var(--ease-out-expo);
+    box-shadow: -8px 0 40px rgba(0,0,0,.15);
+  }
+  .header-nav.open { right: 0; }
+  .header-nav a { font-size: .9rem; color: rgba(249,247,244,.6) !important; letter-spacing: .08em; }
+  .header-nav a:hover { color: var(--ivory) !important; }
+  .menu-toggle { display: block; z-index: 110; }
+  .nav-overlay {
+    position: fixed; inset: 0; background: rgba(13,27,42,.45);
+    opacity: 0; pointer-events: none; transition: opacity .35s; z-index: 99;
+  }
+  .nav-overlay.active { opacity: 1; pointer-events: auto; }
+}
+
+/* ── Hero ── */
+.hero {
+  position: relative; min-height: 100dvh; display: flex; align-items: center;
+  justify-content: center; text-align: center; overflow: hidden;
+  background: var(--navy);
+}
+.hero-bg { position: absolute; inset: 0; z-index: 0; }
+.hero-bg canvas { width: 100%; height: 100%; display: block; }
+
+/* Hero overlays removed — clean navy bg */
+.hero::after, .hero::before { display: none; }
+
+/* ── Architectural background illustrations ── */
+.arch-bg {
+  position: absolute; pointer-events: none; z-index: 0; overflow: hidden;
+}
+.arch-bg svg {
+  width: 100%; height: 100%;
+  stroke: rgba(214,228,240,.045);
+  fill: none; stroke-linecap: round; stroke-linejoin: round;
+}
+.domaines .arch-bg svg { stroke: rgba(13,27,42,.03); }
+
+/* Hero architecture — bridge centered in lower half */
+.hero .arch-hero {
+  left: 0; right: 0; bottom: 6%; width: 100%; height: 55%; z-index: 0;
+  opacity: 0; animation: archFadeIn 2.5s .8s ease-out forwards;
+}
+/* Ambient glow behind bridge */
+.hero .arch-glow {
+  position: absolute; pointer-events: none; z-index: 0;
+  left: 10%; right: 10%; bottom: 8%; height: 40%;
+  background: radial-gradient(ellipse at 50% 80%, rgba(59,95,138,.1) 0%, rgba(184,161,107,.03) 50%, transparent 70%);
+  filter: blur(60px);
+  opacity: 0; animation: archFadeIn 3s 1.2s ease-out forwards;
+}
+.hero .arch-hero svg {
+  stroke-width: .8;
+}
+/* Multi-layer stroke rendering */
+.hero .arch-hero .stroke-structure { stroke: rgba(149,175,210,.1); }
+.hero .arch-hero .stroke-accent { stroke: rgba(184,161,107,.08); }
+.hero .arch-hero .stroke-light { stroke: rgba(214,228,240,.04); }
+.hero .arch-hero .stroke-water { stroke: rgba(149,175,210,.035); }
+.hero .arch-hero .fill-water { fill: rgba(59,95,138,.015); stroke: none; }
+.hero .arch-hero .fill-arch { fill: rgba(13,27,42,.08); stroke: none; }
+
+@keyframes archFadeIn { to { opacity: 1; } }
+
+/* Contact architecture */
+.contact .arch-contact {
+  left: -6%; top: 5%; width: 45%; height: 90%; opacity: .6;
+}
+/* Domaines architecture */
+.domaines .arch-domaines {
+  right: -2%; bottom: 0; width: 35%; height: 70%; opacity: .45;
+}
+
+@media (max-width: 768px) {
+  .arch-bg { opacity: .4 !important; }
+  .hero .arch-hero { width: 95%; right: -20%; }
+  .hero .arch-glow { width: 60%; right: 0; }
+  .hero::before {
+    background: linear-gradient(90deg, rgba(13,27,42,.88) 0%, rgba(13,27,42,.5) 45%, transparent 75%);
+  }
+  .contact .arch-contact { width: 70%; left: -15%; }
+  .domaines .arch-domaines { display: none; }
+}
+
+/* Hero — left-aligned editorial layout */
+.hero-content {
+  position: relative; z-index: 2;
+  width: 100%; max-width: 1080px;
+  padding: 0 clamp(20px, 4vw, 40px);
+  margin: 0 auto;
+  text-align: left;
+}
+.hero-pretitle {
+  font-family: 'DM Sans', sans-serif; font-size: .68rem; font-weight: 500;
+  letter-spacing: .22em; text-transform: uppercase; color: var(--gold-accent);
+  margin-bottom: 24px;
+  display: inline-flex; align-items: center; gap: 14px;
+}
+.hero-pretitle::before {
+  content: ''; width: 32px; height: 1px; background: var(--gold-accent); opacity: .5;
+}
+.hero-name {
+  font-family: 'Cormorant Garamond', serif;
+  color: var(--ivory); margin-bottom: 20px;
+}
+.hero-name .first {
+  display: block; font-weight: 300;
+  font-size: clamp(2.2rem, 4.5vw, 3.5rem);
+  line-height: 1.15; letter-spacing: .04em;
+  color: rgba(249,247,244,.5);
+}
+.hero-name .last {
+  display: block; font-weight: 600;
+  font-size: clamp(4.5rem, 11vw, 9rem);
+  line-height: .88; letter-spacing: -.04em;
+  margin-top: 2px;
+  background: linear-gradient(180deg, rgba(249,247,244,1) 30%, rgba(249,247,244,.6) 100%);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.hero-title {
+  font-family: 'DM Sans', sans-serif; font-size: clamp(.68rem, .85vw, .76rem);
+  font-weight: 400; color: rgba(214,228,240,.4); letter-spacing: .16em;
+  text-transform: uppercase; margin-bottom: 40px;
+  margin-top: 8px;
+}
+.hero-tagline {
+  font-family: 'Cormorant Garamond', serif; font-weight: 300; font-style: italic;
+  font-size: clamp(1.2rem, 1.8vw, 1.5rem); color: rgba(249,247,244,.4);
+  margin-bottom: 52px; letter-spacing: .01em;
+  max-width: 380px;
+  padding-left: 24px; border-left: 2px solid var(--gold-accent);
+}
+.btn-primary {
+  display: inline-flex; align-items: center; gap: 12px;
+  padding: 18px 48px;
+  font-family: 'DM Sans', sans-serif; font-size: .74rem; font-weight: 600;
+  letter-spacing: .14em; text-transform: uppercase; text-decoration: none;
+  color: var(--ivory); background: transparent;
+  border: 1px solid rgba(249,247,244,.25);
+  cursor: pointer;
+  transition: all .45s var(--ease-out-expo);
+  position: relative; overflow: hidden;
+}
+.btn-primary:hover {
+  background: var(--gold-accent); color: #fff;
+  border-color: var(--gold-accent);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 40px rgba(184,161,107,.25);
+}
+.btn-primary .btn-arrow {
+  width: 16px; height: 16px; stroke: currentColor; stroke-width: 1.5;
+  fill: none; transition: transform .35s var(--ease-out-expo);
+}
+.btn-primary:hover .btn-arrow { transform: translateX(4px); }
+
+/* Scroll hint stays centered at bottom */
+.hero-scroll-hint {
+  position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%);
+  z-index: 2;
+}
+.hero-scroll-hint svg {
+  width: 18px; height: 18px; stroke: rgba(249,247,244,.25); stroke-width: 1.5;
+}
+
+/* On very wide screens, offset content left more */
+@media (min-width: 1200px) {
+  .hero-content { padding-left: 8%; }
+}
+/* Mobile: center it back gracefully */
+@media (max-width: 600px) {
+  .hero-content { text-align: center; }
+  .hero-pretitle { justify-content: center; }
+  .hero-tagline { border-left: none; padding-left: 0; margin-left: auto; margin-right: auto; text-align: center; }
+  .hero-name .first { font-size: clamp(1.8rem, 6vw, 2.4rem); }
+  .hero-name .last { font-size: clamp(3rem, 12vw, 4.5rem); }
+}
+
+/* ── Section defaults ── */
+section { padding: var(--section-pad) 0; }
+.section-label {
+  font-family: 'DM Sans', sans-serif; font-size: .68rem; font-weight: 600;
+  letter-spacing: .2em; text-transform: uppercase; color: var(--gold-accent);
+  margin-bottom: 14px;
+}
+.section-heading {
+  font-family: 'Cormorant Garamond', serif; font-weight: 400;
+  font-size: clamp(2rem, 3.5vw, 2.7rem); color: var(--navy);
+  line-height: 1.18; margin-bottom: 20px; letter-spacing: -.01em;
+}
+.section-body {
+  font-size: .95rem; line-height: 1.8; color: var(--text-light);
+  max-width: 520px;
+}
+.section-divider {
+  width: 40px; height: 1px; background: var(--gold-accent);
+  margin-bottom: 20px;
+  transform-origin: left; transform: scaleX(0);
+  transition: transform .8s .2s var(--ease-out-expo);
+}
+.reveal.visible .section-divider,
+.reveal-left.visible .section-divider,
+.stagger.visible .section-divider { transform: scaleX(1); }
+.section-divider.centered { transform-origin: center; margin-left: auto; margin-right: auto; }
+
+/* ── Reveal animations ── */
+.reveal {
+  opacity: 0; transform: translateY(28px);
+  transition: opacity .85s var(--ease-out-expo), transform .85s var(--ease-out-expo);
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+.stagger > * {
+  opacity: 0; transform: translateY(18px);
+  transition: opacity .7s var(--ease-out-expo), transform .7s var(--ease-out-expo);
+}
+.stagger.visible > *:nth-child(1) { transition-delay: 0s; }
+.stagger.visible > *:nth-child(2) { transition-delay: .07s; }
+.stagger.visible > *:nth-child(3) { transition-delay: .14s; }
+.stagger.visible > *:nth-child(4) { transition-delay: .21s; }
+.stagger.visible > *:nth-child(5) { transition-delay: .28s; }
+.stagger.visible > *:nth-child(6) { transition-delay: .35s; }
+.stagger.visible > *:nth-child(7) { transition-delay: .42s; }
+.stagger.visible > *:nth-child(8) { transition-delay: .49s; }
+.stagger.visible > * { opacity: 1; transform: translateY(0); }
+
+.reveal-scale {
+  opacity: 0; transform: scale(.95);
+  transition: opacity 1.1s var(--ease-out-expo), transform 1.1s var(--ease-out-expo);
+}
+.reveal-scale.visible { opacity: 1; transform: scale(1); }
+
+/* ── Hero entrance ── */
+.hero-content > * {
+  opacity: 0; transform: translateY(24px);
+  animation: heroFadeUp .9s var(--ease-out-expo) forwards;
+}
+.hero-pretitle  { animation-delay: .3s; }
+.hero-name      { animation-delay: .5s; }
+/* Stagger first/last name individually */
+.hero-name .first,
+.hero-name .last {
+  opacity: 0; display: block;
+  animation: heroFadeUp .9s var(--ease-out-expo) forwards;
+}
+.hero-name .first { animation-delay: .5s; transform: translateY(16px); }
+.hero-name .last  { animation-delay: .7s; transform: translateX(-20px); animation-name: heroSlideRight; }
+.hero-title     { animation-delay: .92s; }
+.hero-tagline   { animation-delay: 1.08s; }
+.hero-content .btn-primary { animation-delay: 1.28s; }
+
+@keyframes heroFadeUp {
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes heroSlideRight {
+  from { opacity: 0; transform: translateX(-20px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+.hero-scroll-hint {
+  opacity: 0; animation: heroHintIn 1s 1.8s var(--ease-out-expo) forwards, gentleBounce 3s 2.8s ease-in-out infinite;
+}
+@keyframes heroHintIn { to { opacity: 1; } }
+@keyframes gentleBounce {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50% { transform: translateX(-50%) translateY(5px); }
+}
+
+/* Header nav entrance */
+@media (min-width: 769px) {
+  .header-nav a {
+    opacity: 0; transform: translateY(-6px);
+    animation: navIn .5s var(--ease-out-expo) forwards;
+  }
+  .header-nav a:nth-child(1) { animation-delay: .2s; }
+  .header-nav a:nth-child(2) { animation-delay: .28s; }
+  .header-nav a:nth-child(3) { animation-delay: .36s; }
+  .header-nav a:nth-child(4) { animation-delay: .44s; }
+}
+@keyframes navIn { to { opacity: 1; transform: translateY(0); } }
+
+/* SVG icon draw-on */
+.domaine-icon svg * {
+  stroke-dasharray: 200; stroke-dashoffset: 200;
+  transition: stroke-dashoffset 1.2s .3s var(--ease-out-expo);
+}
+.reveal.visible .domaine-icon svg * { stroke-dashoffset: 0; }
+
+/* Pill entrance */
+.pill {
+  opacity: 0; transform: translateY(10px) scale(.96);
+  transition: all .5s var(--ease-out-expo);
+}
+.pills.visible .pill { opacity: 1; transform: translateY(0) scale(1); }
+.pills.visible .pill:nth-child(1) { transition-delay: .06s; }
+.pills.visible .pill:nth-child(2) { transition-delay: .14s; }
+.pills.visible .pill:nth-child(3) { transition-delay: .22s; }
+.pills.visible .pill:nth-child(4) { transition-delay: .30s; }
+
+/* Form field entrance */
+.form-field {
+  opacity: 0; transform: translateY(14px);
+  transition: opacity .6s var(--ease-out-expo), transform .6s var(--ease-out-expo);
+}
+.contact-form.visible .form-field { opacity: 1; transform: translateY(0); }
+.contact-form.visible .form-field:nth-child(1) { transition-delay: .06s; }
+.contact-form.visible .form-field:nth-child(2) { transition-delay: .14s; }
+.contact-form.visible .form-field:nth-child(3) { transition-delay: .22s; }
+.contact-form.visible .form-field:nth-child(4) { transition-delay: .30s; }
+.contact-form .btn-submit {
+  opacity: 0; transform: translateY(14px);
+  transition: opacity .6s var(--ease-out-expo), transform .6s var(--ease-out-expo),
+              background .35s ease, color .35s ease, box-shadow .35s ease;
+}
+.contact-form.visible .btn-submit { opacity: 1; transform: translateY(0); transition-delay: .38s; }
+
+/* Contact info entrance */
+.contact-info-block {
+  opacity: 0; transform: translateY(18px);
+  transition: opacity .7s var(--ease-out-expo), transform .7s var(--ease-out-expo);
+}
+.contact-info.visible .contact-info-block { opacity: 1; transform: translateY(0); }
+.contact-info.visible .contact-info-block:nth-child(1) { transition-delay: .1s; }
+.contact-info.visible .contact-info-block:nth-child(2) { transition-delay: .24s; }
+.contact-info.visible .contact-info-block:nth-child(3) { transition-delay: .38s; }
+
+/* Footer reveal */
+.footer-inner {
+  opacity: 0; transform: translateY(14px);
+  transition: opacity .7s var(--ease-out-expo), transform .7s var(--ease-out-expo);
+}
+.site-footer.visible .footer-inner { opacity: 1; transform: translateY(0); }
+
+/* Button glow */
+.btn-primary::before, .btn-submit::before {
+  content: ''; position: absolute; inset: 0;
+  background: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+    rgba(184,161,107,.18) 0%, transparent 55%);
+  opacity: 0; transition: opacity .4s;
+}
+.btn-primary:hover::before, .btn-submit:hover::before { opacity: 1; }
+
+/* ── À propos ── */
+.about { background: var(--ivory); }
+.about-grid {
+  display: grid; grid-template-columns: .85fr 1fr; gap: clamp(40px, 6vw, 80px);
+  align-items: center;
+}
+.about-photo {
+  aspect-ratio: 3/4; position: relative; overflow: hidden;
+}
+.about-photo-inner {
+  width: 100%; height: 100%;
+  background: linear-gradient(155deg, var(--blue-pale) 0%, rgba(59,95,138,.15) 100%);
+  display: flex; align-items: center; justify-content: center;
+}
+.about-photo-inner span {
+  font-family: 'Cormorant Garamond', serif; font-size: .85rem;
+  color: var(--blue-mid); opacity: .45; font-style: italic;
+}
+/* Photo decorative frame offset */
+.about-photo::before {
+  content: ''; position: absolute; top: 12px; left: 12px; right: -12px; bottom: -12px;
+  border: 1px solid var(--gold-accent); opacity: .2; z-index: -1;
+  transition: opacity .6s, transform .6s var(--ease-out-expo);
+}
+.reveal-scale.visible .about-photo::before { opacity: .2; }
+/* Shimmer */
+.about-photo::after {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(110deg, transparent 35%, rgba(255,255,255,.05) 50%, transparent 65%);
+  background-size: 250% 100%; animation: shimmer 4s 1s ease-in-out infinite;
+  pointer-events: none;
+}
+@keyframes shimmer {
+  0% { background-position: 250% 0; }
+  100% { background-position: -250% 0; }
+}
+
+.about-text { max-width: 480px; }
+.about-text p {
+  font-size: .95rem; line-height: 1.85; color: var(--text-main);
+  margin-bottom: 14px;
+}
+.about-text p:last-child { margin-bottom: 0; }
+.about-text .body-paragraph { color: var(--text-light); }
+.about-signature {
+  margin-top: 36px; font-family: 'Cormorant Garamond', serif;
+  font-size: 1.1rem; font-style: italic; color: var(--blue-mid);
+  padding-top: 20px; border-top: 1px solid rgba(13,27,42,.06);
+}
+
+@media (max-width: 768px) {
+  .about-grid { grid-template-columns: 1fr; gap: 36px; }
+  .about-photo { max-width: 300px; margin: 0 auto; }
+  .about-photo::before { display: none; }
+}
+
+/* ── Domaines ── */
+.domaines { background: #fff; position: relative; overflow: hidden; }
+/* Top edge gradient fade */
+.domaines::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
+  background: linear-gradient(90deg, transparent 10%, rgba(13,27,42,.06) 50%, transparent 90%);
+}
+.domaines-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px;
+  margin-top: 52px;
+}
+.domaine-card {
+  padding: 44px 32px 40px; border: 1px solid rgba(13,27,42,.06);
+  position: relative; background: #fff;
+  transition: all .45s var(--ease-out-expo);
+}
+.domaine-card::after {
+  content: ''; position: absolute; bottom: 0; left: 0; right: 0;
+  height: 2px; background: var(--gold-accent);
+  transform: scaleX(0); transform-origin: left; transition: transform .45s var(--ease-out-expo);
+}
+.domaine-card:hover {
+  border-color: rgba(13,27,42,.1);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 40px rgba(13,27,42,.05);
+}
+.domaine-card:hover::after { transform: scaleX(1); }
+.domaine-icon {
+  width: 40px; height: 40px; margin-bottom: 28px;
+  color: var(--blue-mid);
+}
+.domaine-icon svg { width: 100%; height: 100%; stroke-width: 1.2; }
+.domaine-card h3 {
+  font-family: 'Cormorant Garamond', serif; font-weight: 500;
+  font-size: 1.35rem; color: var(--navy); margin-bottom: 12px;
+  letter-spacing: .005em;
+}
+.domaine-card p {
+  font-size: .88rem; color: var(--text-light); line-height: 1.75;
+}
+
+@media (max-width: 768px) {
+  .domaines-grid { grid-template-columns: 1fr; gap: 20px; }
+  .domaine-card { padding: 32px 28px; }
+}
+
+/* ── Clientèle ── */
+.clientele {
+  background: var(--ivory); text-align: center;
+  padding: var(--section-pad) 0 calc(var(--section-pad) * .85);
+  position: relative;
+}
+.clientele::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
+  background: linear-gradient(90deg, transparent 10%, rgba(13,27,42,.06) 50%, transparent 90%);
+}
+.pills {
+  display: flex; flex-wrap: wrap; justify-content: center;
+  gap: 12px; margin-top: 44px;
+}
+.pill {
+  padding: 11px 30px; font-size: .8rem; font-weight: 500;
+  letter-spacing: .06em; color: var(--navy);
+  border: 1px solid rgba(13,27,42,.12); background: transparent;
+  transition: all .4s var(--ease-out-expo);
+}
+.pill:hover {
+  border-color: var(--gold-accent); color: var(--gold-accent);
+  background: var(--gold-light);
+  transform: translateY(-1px);
+}
+
+/* ── Contact ── */
+.contact {
+  background: var(--navy); color: var(--ivory);
+  position: relative; overflow: hidden;
+}
+/* Subtle top edge gradient */
+.contact::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 80px;
+  background: linear-gradient(180deg, rgba(13,27,42,.15), transparent);
+  pointer-events: none; z-index: 0;
+}
+.contact .section-heading { color: var(--ivory); }
+.contact-grid {
+  display: grid; grid-template-columns: 1.1fr 1fr; gap: clamp(48px, 6vw, 80px);
+  margin-top: 44px; position: relative;
+}
+/* Vertical divider */
+.contact-grid::before {
+  content: ''; position: absolute; left: calc(1.1fr / 2.1);
+  top: 0; bottom: 0; width: 1px;
+  background: linear-gradient(180deg, rgba(249,247,244,.08), rgba(249,247,244,.03), transparent);
+  display: none;
+}
+@media (min-width: 769px) { .contact-grid::before { display: block; left: 55%; } }
+
+.contact-form { display: flex; flex-direction: column; gap: 18px; }
+.form-field { display: flex; flex-direction: column; gap: 7px; }
+.form-field label {
+  font-size: .7rem; font-weight: 500; letter-spacing: .1em;
+  text-transform: uppercase; color: rgba(249,247,244,.4);
+}
+.form-field input,
+.form-field textarea {
+  padding: 14px 0; background: transparent;
+  border: none; border-bottom: 1px solid rgba(249,247,244,.1);
+  color: var(--ivory); font-family: 'DM Sans', sans-serif; font-size: .92rem;
+  transition: border-color .35s var(--ease-out-expo), box-shadow .35s; outline: none; resize: vertical;
+  border-radius: 0;
+}
+.form-field input::placeholder,
+.form-field textarea::placeholder { color: rgba(249,247,244,.2); }
+.form-field input:focus,
+.form-field textarea:focus {
+  border-bottom-color: var(--gold-accent);
+  box-shadow: 0 1px 0 0 var(--gold-accent);
+}
+.form-field textarea { min-height: 100px; }
+
+.btn-submit {
+  align-self: flex-start; padding: 14px 44px; margin-top: 8px;
+  background: var(--ivory); color: var(--navy);
+  font-family: 'DM Sans', sans-serif; font-size: .76rem; font-weight: 600;
+  letter-spacing: .1em; text-transform: uppercase;
+  border: none; cursor: pointer; position: relative; overflow: hidden;
+  transition: all .4s var(--ease-out-expo);
+}
+.btn-submit:hover {
+  background: var(--gold-accent); color: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 24px rgba(184,161,107,.2);
+}
+
+.contact-info { padding-top: 4px; }
+.contact-info h3 {
+  font-family: 'Cormorant Garamond', serif; font-weight: 400;
+  font-size: 1.3rem; color: var(--ivory); margin-bottom: 16px;
+  letter-spacing: .01em;
+}
+.contact-info p {
+  font-size: .88rem; line-height: 1.9; color: rgba(249,247,244,.5);
+}
+.contact-info p strong {
+  color: rgba(249,247,244,.8); font-weight: 500;
+}
+.contact-info-block {
+  margin-bottom: 36px;
+  padding-bottom: 28px;
+  border-bottom: 1px solid rgba(249,247,244,.05);
+}
+.contact-info-block:last-child { margin-bottom: 0; padding-bottom: 0; border-bottom: none; }
+
+@media (max-width: 768px) {
+  .contact-grid { grid-template-columns: 1fr; gap: 48px; }
+}
+
+/* ── Footer ── */
+.site-footer {
+  background: var(--navy);
+  border-top: 1px solid rgba(249,247,244,.06);
+  padding: 48px 0 36px;
+}
+.footer-inner {} /* wrapper for reveal */
+.footer-top {
+  display: flex; align-items: center; justify-content: space-between;
+  margin-bottom: 36px;
+}
+.footer-brand {
+  font-family: 'Cormorant Garamond', serif; font-weight: 400;
+  font-size: 1.1rem; color: rgba(249,247,244,.7); text-decoration: none;
+  transition: color .3s;
+}
+.footer-brand:hover { color: var(--ivory); }
+.footer-links { display: flex; gap: 28px; }
+.footer-links a {
+  font-size: .72rem; color: rgba(249,247,244,.35);
+  text-decoration: none; letter-spacing: .06em; text-transform: uppercase;
+  transition: color .3s;
+}
+.footer-links a:hover { color: var(--gold-accent); }
+.footer-bottom {
+  text-align: center; font-size: .7rem; color: rgba(249,247,244,.2);
+  padding-top: 28px; border-top: 1px solid rgba(249,247,244,.04);
+  letter-spacing: .04em;
+}
+
+@media (max-width: 768px) {
+  .footer-top { flex-direction: column; gap: 24px; text-align: center; }
+  .footer-links { flex-wrap: wrap; justify-content: center; gap: 16px; }
+}
+
+/* ── Reduced motion ── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important; animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  .reveal, .reveal-scale, .stagger > *, .pill, .form-field,
+  .contact-info-block, .footer-inner, .hero-content > * {
+    opacity: 1 !important; transform: none !important;
+  }
+}
+</style>
+</head>
+<body>
+
+<!-- Overlay for mobile nav -->
+<div class="nav-overlay" id="navOverlay"></div>
+
+<!-- Header -->
+<header class="site-header" id="siteHeader">
+  <div class="header-inner">
+    <a href="#" class="header-brand">Jonathan Prebon</a>
+    <button class="menu-toggle" id="menuToggle" aria-label="Ouvrir le menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round">
+        <line x1="4" y1="8" x2="20" y2="8"/>
+        <line x1="4" y1="16" x2="20" y2="16"/>
+      </svg>
+    </button>
+    <nav class="header-nav" id="headerNav">
+      <a href="#about">À propos</a>
+      <a href="#domaines">Expertise</a>
+      <a href="#clientele">Clientèle</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<!-- Hero -->
+<section class="hero" id="hero">
+  <div class="hero-bg"><canvas id="heroCanvas"></canvas></div>
+
+  <!-- Pont de Paris — elegant bridge outline -->
+  <div class="arch-bg arch-hero">
+    <svg viewBox="0 0 1200 500" preserveAspectRatio="xMidYMax meet">
+
+      <!-- Water reflection area -->
+      <g class="fill-water">
+        <rect x="0" y="320" width="1200" height="180"/>
+      </g>
+
+      <!-- Dark inside arches -->
+      <g class="fill-arch">
+        <path d="M60 310 Q155 195 250 310 Z"/>
+        <path d="M270 310 Q390 175 510 310 Z"/>
+        <path d="M530 310 Q650 175 770 310 Z"/>
+        <path d="M790 310 Q910 175 1030 310 Z"/>
+        <path d="M1050 310 Q1110 230 1170 310 Z"/>
+      </g>
+
+      <!-- Main bridge structure -->
+      <g class="stroke-structure">
+        <!-- Bridge deck — top surface -->
+        <line x1="0" y1="148" x2="1200" y2="148"/>
+        <line x1="0" y1="155" x2="1200" y2="155"/>
+        <!-- Cornice / moulding line -->
+        <line x1="0" y1="142" x2="1200" y2="142"/>
+
+        <!-- Spandrel wall (solid area between arches and deck) -->
+        <line x1="0" y1="310" x2="1200" y2="310"/>
+
+        <!-- Five arches — varying sizes for perspective/elegance -->
+        <!-- Arch 1 (partial, left edge) -->
+        <path d="M60 310 Q155 195 250 310"/>
+        <!-- Arch 2 (full) -->
+        <path d="M270 310 Q390 175 510 310"/>
+        <!-- Arch 3 (central, grandest) -->
+        <path d="M530 310 Q650 160 770 310"/>
+        <!-- Arch 4 (full) -->
+        <path d="M790 310 Q910 175 1030 310"/>
+        <!-- Arch 5 (partial, right edge) -->
+        <path d="M1050 310 Q1110 230 1170 310"/>
+
+        <!-- Inner arch rings (double-ring detail) -->
+        <path d="M72 305 Q155 202 238 305"/>
+        <path d="M282 305 Q390 183 498 305"/>
+        <path d="M542 305 Q650 168 758 305"/>
+        <path d="M802 305 Q910 183 1018 305"/>
+
+        <!-- Pier walls between arches -->
+        <line x1="250" y1="155" x2="250" y2="310"/>
+        <line x1="270" y1="155" x2="270" y2="310"/>
+        <line x1="510" y1="155" x2="510" y2="310"/>
+        <line x1="530" y1="155" x2="530" y2="310"/>
+        <line x1="770" y1="155" x2="770" y2="310"/>
+        <line x1="790" y1="155" x2="790" y2="310"/>
+        <line x1="1030" y1="155" x2="1030" y2="310"/>
+        <line x1="1050" y1="155" x2="1050" y2="310"/>
+
+        <!-- Cutwaters (pointed pier bases going into water) -->
+        <path d="M250 310 L260 365 L270 310"/>
+        <path d="M510 310 L520 370 L530 310"/>
+        <path d="M770 310 L780 370 L790 310"/>
+        <path d="M1030 310 L1040 360 L1050 310"/>
+      </g>
+
+      <!-- Gold accent details — railings, lanterns, medallions -->
+      <g class="stroke-accent">
+        <!-- Balustrade railing -->
+        <line x1="0" y1="128" x2="1200" y2="128"/>
+        <line x1="0" y1="140" x2="1200" y2="140"/>
+        <!-- Baluster verticals -->
+        <line x1="30" y1="128" x2="30" y2="140"/>
+        <line x1="55" y1="128" x2="55" y2="140"/>
+        <line x1="80" y1="128" x2="80" y2="140"/>
+        <line x1="105" y1="128" x2="105" y2="140"/>
+        <line x1="130" y1="128" x2="130" y2="140"/>
+        <line x1="155" y1="128" x2="155" y2="140"/>
+        <line x1="180" y1="128" x2="180" y2="140"/>
+        <line x1="205" y1="128" x2="205" y2="140"/>
+        <line x1="290" y1="128" x2="290" y2="140"/>
+        <line x1="315" y1="128" x2="315" y2="140"/>
+        <line x1="340" y1="128" x2="340" y2="140"/>
+        <line x1="365" y1="128" x2="365" y2="140"/>
+        <line x1="390" y1="128" x2="390" y2="140"/>
+        <line x1="415" y1="128" x2="415" y2="140"/>
+        <line x1="440" y1="128" x2="440" y2="140"/>
+        <line x1="465" y1="128" x2="465" y2="140"/>
+        <line x1="490" y1="128" x2="490" y2="140"/>
+        <line x1="550" y1="128" x2="550" y2="140"/>
+        <line x1="575" y1="128" x2="575" y2="140"/>
+        <line x1="600" y1="128" x2="600" y2="140"/>
+        <line x1="625" y1="128" x2="625" y2="140"/>
+        <line x1="650" y1="128" x2="650" y2="140"/>
+        <line x1="675" y1="128" x2="675" y2="140"/>
+        <line x1="700" y1="128" x2="700" y2="140"/>
+        <line x1="725" y1="128" x2="725" y2="140"/>
+        <line x1="750" y1="128" x2="750" y2="140"/>
+        <line x1="810" y1="128" x2="810" y2="140"/>
+        <line x1="835" y1="128" x2="835" y2="140"/>
+        <line x1="860" y1="128" x2="860" y2="140"/>
+        <line x1="885" y1="128" x2="885" y2="140"/>
+        <line x1="910" y1="128" x2="910" y2="140"/>
+        <line x1="935" y1="128" x2="935" y2="140"/>
+        <line x1="960" y1="128" x2="960" y2="140"/>
+        <line x1="985" y1="128" x2="985" y2="140"/>
+        <line x1="1010" y1="128" x2="1010" y2="140"/>
+        <line x1="1070" y1="128" x2="1070" y2="140"/>
+        <line x1="1095" y1="128" x2="1095" y2="140"/>
+        <line x1="1120" y1="128" x2="1120" y2="140"/>
+        <line x1="1145" y1="128" x2="1145" y2="140"/>
+        <line x1="1170" y1="128" x2="1170" y2="140"/>
+
+        <!-- Lantern posts on piers -->
+        <line x1="260" y1="85" x2="260" y2="128"/>
+        <line x1="520" y1="80" x2="520" y2="128"/>
+        <line x1="780" y1="80" x2="780" y2="128"/>
+        <line x1="1040" y1="85" x2="1040" y2="128"/>
+        <!-- Lantern bodies (ornate flame shapes) -->
+        <path d="M250 85 Q260 68 270 85"/>
+        <path d="M247 85 L273 85"/>
+        <path d="M510 80 Q520 60 530 80"/>
+        <path d="M506 80 L534 80"/>
+        <path d="M770 80 Q780 60 790 80"/>
+        <path d="M766 80 L794 80"/>
+        <path d="M1030 85 Q1040 68 1050 85"/>
+        <path d="M1027 85 L1053 85"/>
+
+        <!-- Medallion circles on piers (between arches) -->
+        <circle cx="260" cy="220" r="18"/>
+        <circle cx="260" cy="220" r="10"/>
+        <circle cx="520" cy="215" r="20"/>
+        <circle cx="520" cy="215" r="12"/>
+        <circle cx="780" cy="215" r="20"/>
+        <circle cx="780" cy="215" r="12"/>
+        <circle cx="1040" cy="220" r="18"/>
+        <circle cx="1040" cy="220" r="10"/>
+
+        <!-- Keystones at arch crowns -->
+        <rect x="150" y="198" width="10" height="14" rx="2"/>
+        <rect x="385" y="178" width="12" height="16" rx="2"/>
+        <rect x="644" y="163" width="12" height="18" rx="2"/>
+        <rect x="904" y="178" width="12" height="16" rx="2"/>
+      </g>
+
+      <!-- Water reflections -->
+      <g class="stroke-water">
+        <!-- Shimmering horizontal lines in water -->
+        <line x1="80" y1="340" x2="220" y2="340"/>
+        <line x1="300" y1="350" x2="480" y2="350"/>
+        <line x1="560" y1="345" x2="740" y2="345"/>
+        <line x1="820" y1="350" x2="1000" y2="350"/>
+        <line x1="100" y1="365" x2="200" y2="365"/>
+        <line x1="340" y1="375" x2="460" y2="375"/>
+        <line x1="580" y1="370" x2="720" y2="370"/>
+        <line x1="840" y1="375" x2="980" y2="375"/>
+        <line x1="130" y1="390" x2="210" y2="390"/>
+        <line x1="370" y1="400" x2="440" y2="400"/>
+        <line x1="610" y1="395" x2="700" y2="395"/>
+        <line x1="870" y1="400" x2="950" y2="400"/>
+        <!-- Arch reflections (inverted, fading) -->
+        <path d="M270 320 Q390 395 510 320"/>
+        <path d="M530 320 Q650 400 770 320"/>
+        <path d="M790 320 Q910 395 1030 320"/>
+        <!-- Deeper reflections -->
+        <line x1="160" y1="420" x2="200" y2="420"/>
+        <line x1="400" y1="430" x2="430" y2="430"/>
+        <line x1="640" y1="425" x2="680" y2="425"/>
+        <line x1="900" y1="430" x2="940" y2="430"/>
+      </g>
+
+      <!-- Light structural details -->
+      <g class="stroke-light">
+        <!-- Voussoir lines radiating from arch keystones -->
+        <!-- Arch 2 -->
+        <line x1="330" y1="205" x2="310" y2="300"/>
+        <line x1="450" y1="205" x2="470" y2="300"/>
+        <!-- Arch 3 -->
+        <line x1="590" y1="195" x2="565" y2="300"/>
+        <line x1="710" y1="195" x2="735" y2="300"/>
+        <!-- Arch 4 -->
+        <line x1="850" y1="205" x2="830" y2="300"/>
+        <line x1="970" y1="205" x2="990" y2="300"/>
+
+        <!-- String course (horizontal moulding mid-spandrel) -->
+        <line x1="60" y1="230" x2="250" y2="230"/>
+        <line x1="270" y1="230" x2="510" y2="230"/>
+        <line x1="530" y1="230" x2="770" y2="230"/>
+        <line x1="790" y1="230" x2="1030" y2="230"/>
+        <line x1="1050" y1="230" x2="1170" y2="230"/>
+      </g>
+    </svg>
+  </div>
+
+  <div class="hero-content">
+    <p class="hero-pretitle">Avocat au Barreau</p>
+    <h1 class="hero-name">
+      <span class="first">Maître</span>
+      <span class="last">Jonathan Prebon</span>
+    </h1>
+    <p class="hero-title">Droit fiscal &middot; Entreprises en difficulté &middot; Droit douanier</p>
+    <p class="hero-tagline">Rigueur fiscale.<br>Clarté stratégique.</p>
+    <a href="#contact" class="btn-primary">
+      Prendre contact
+      <svg class="btn-arrow" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
+    </a>
+  </div>
+  <div class="hero-scroll-hint">
+    <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M7 13l5 5 5-5"/>
+    </svg>
+  </div>
+</section>
+
+<!-- À propos -->
+<section class="about" id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-photo reveal-scale">
+        <div class="about-photo-inner">
+          <span>Portrait</span>
+        </div>
+      </div>
+      <div class="about-text reveal stagger">
+        <p class="section-label">À propos</p>
+        <div class="section-divider"></div>
+        <h2 class="section-heading">Un conseil juridique<br>ancré dans la rigueur</h2>
+        <p class="body-paragraph">Maître Jonathan Prebon accompagne depuis plus de quinze ans une clientèle exigeante — dirigeants d'entreprise, sociétés en restructuration, opérateurs du commerce international — dans la résolution de problématiques fiscales et douanières complexes.</p>
+        <p class="body-paragraph">Formé aux meilleures traditions du droit continental, il allie expertise technique et vision stratégique pour défendre les intérêts de ses clients devant les juridictions compétentes et dans leurs relations avec l'administration.</p>
+        <p class="body-paragraph">Son approche repose sur l'écoute, la précision de l'analyse et un engagement sans concession envers la qualité du conseil.</p>
+        <p class="about-signature">— Maître Jonathan Prebon</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Domaines d'intervention -->
+<section class="domaines" id="domaines">
+
+  <!-- Repeating pointed arches (Palais de Justice motif) -->
+  <div class="arch-bg arch-domaines">
+    <svg viewBox="0 0 400 600" preserveAspectRatio="xMaxYMax meet" stroke-width="0.5">
+      <!-- Row of Gothic-ish pointed arches -->
+      <path d="M20 580 L20 280 Q20 200 80 160 Q140 200 140 280 L140 580"/>
+      <path d="M140 580 L140 280 Q140 200 200 160 Q260 200 260 280 L260 580"/>
+      <path d="M260 580 L260 280 Q260 200 320 160 Q380 200 380 280 L380 580"/>
+      <!-- Tracery circles in arch peaks -->
+      <circle cx="80" cy="210" r="14"/>
+      <circle cx="200" cy="210" r="14"/>
+      <circle cx="320" cy="210" r="14"/>
+      <!-- Horizontal band -->
+      <line x1="10" y1="580" x2="390" y2="580"/>
+      <line x1="10" y1="150" x2="390" y2="150"/>
+      <!-- Small rosette detail -->
+      <circle cx="80" cy="210" r="6"/>
+      <circle cx="200" cy="210" r="6"/>
+      <circle cx="320" cy="210" r="6"/>
+      <!-- Vertical mullions -->
+      <line x1="80" y1="224" x2="80" y2="580"/>
+      <line x1="200" y1="224" x2="200" y2="580"/>
+      <line x1="320" y1="224" x2="320" y2="580"/>
+      <!-- Cross bars -->
+      <line x1="20" y1="400" x2="140" y2="400"/>
+      <line x1="140" y1="400" x2="260" y2="400"/>
+      <line x1="260" y1="400" x2="380" y2="400"/>
+    </svg>
+  </div>
+
+  <div class="container">
+    <div class="reveal">
+      <p class="section-label">Domaines d'intervention</p>
+      <div class="section-divider"></div>
+      <h2 class="section-heading">Expertise ciblée,<br>résultats mesurables</h2>
+    </div>
+    <div class="domaines-grid">
+      <div class="domaine-card reveal">
+        <div class="domaine-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="6" width="20" height="14" rx="2"/>
+            <path d="M2 10h20"/>
+            <path d="M6 14h4"/>
+          </svg>
+        </div>
+        <h3>Droit fiscal</h3>
+        <p>Optimisation, contentieux et contrôle fiscal : chaque situation appelle une stratégie sur mesure. Nous intervenons à chaque étape pour sécuriser votre patrimoine et vos opérations.</p>
+      </div>
+      <div class="domaine-card reveal">
+        <div class="domaine-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 21h18"/>
+            <path d="M5 21V7l8-4v18"/>
+            <path d="M19 21V11l-6-4"/>
+            <path d="M9 9v.01"/><path d="M9 12v.01"/><path d="M9 15v.01"/><path d="M9 18v.01"/>
+          </svg>
+        </div>
+        <h3>Entreprises en difficulté</h3>
+        <p>Prévention, sauvegarde, redressement ou liquidation : nous accompagnons les dirigeants et les créanciers dans la recherche de solutions viables et la préservation des intérêts en jeu.</p>
+      </div>
+      <div class="domaine-card reveal">
+        <div class="domaine-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"/>
+            <path d="M2 12h20"/>
+            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+          </svg>
+        </div>
+        <h3>Droit douanier</h3>
+        <p>Classement tarifaire, régimes économiques, contentieux douaniers : nous aidons les opérateurs internationaux à naviguer un cadre réglementaire en constante évolution.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Clientèle -->
+<section class="clientele" id="clientele">
+  <div class="container">
+    <div class="reveal">
+      <p class="section-label">Clientèle</p>
+      <div class="section-divider centered"></div>
+      <h2 class="section-heading">Des profils variés,<br>une exigence commune</h2>
+    </div>
+    <div class="pills reveal stagger">
+      <span class="pill">Dirigeants</span>
+      <span class="pill">PME</span>
+      <span class="pill">Travailleurs frontaliers</span>
+      <span class="pill">Particuliers patrimoniaux</span>
+    </div>
+  </div>
+</section>
+
+<!-- Contact -->
+<section class="contact" id="contact">
+
+  <!-- Classical arches & columns -->
+  <div class="arch-bg arch-contact">
+    <svg viewBox="0 0 500 700" preserveAspectRatio="xMinYMid meet" stroke-width="0.7">
+      <!-- Three arches -->
+      <path d="M40 350 L40 650"/>
+      <path d="M40 350 Q120 220 200 350"/>
+      <path d="M200 350 L200 650"/>
+      <path d="M200 350 Q280 220 360 350"/>
+      <path d="M360 350 L360 650"/>
+      <path d="M360 350 Q440 220 520 350"/>
+      <!-- Column bases -->
+      <rect x="25" y="640" width="30" height="20" rx="1"/>
+      <rect x="185" y="640" width="30" height="20" rx="1"/>
+      <rect x="345" y="640" width="30" height="20" rx="1"/>
+      <!-- Column capitals (simple) -->
+      <line x1="28" y1="350" x2="52" y2="350"/>
+      <line x1="188" y1="350" x2="212" y2="350"/>
+      <line x1="348" y1="350" x2="372" y2="350"/>
+      <!-- Entablature -->
+      <line x1="20" y1="340" x2="540" y2="340"/>
+      <line x1="20" y1="330" x2="540" y2="330"/>
+      <!-- Pediment -->
+      <path d="M20 330 L280 240 L540 330"/>
+      <path d="M60 330 L280 260 L500 330"/>
+      <!-- Keystones -->
+      <circle cx="120" cy="265" r="6"/>
+      <circle cx="280" cy="265" r="6"/>
+      <circle cx="440" cy="265" r="6"/>
+      <!-- Fluting lines on columns -->
+      <line x1="36" y1="360" x2="36" y2="635"/>
+      <line x1="44" y1="360" x2="44" y2="635"/>
+      <line x1="196" y1="360" x2="196" y2="635"/>
+      <line x1="204" y1="360" x2="204" y2="635"/>
+      <line x1="356" y1="360" x2="356" y2="635"/>
+      <line x1="364" y1="360" x2="364" y2="635"/>
+      <!-- Ground line -->
+      <line x1="10" y1="660" x2="540" y2="660"/>
+    </svg>
+  </div>
+
+  <div class="container">
+    <div class="reveal">
+      <p class="section-label">Contact</p>
+      <div class="section-divider"></div>
+      <h2 class="section-heading">Échangeons sur<br>votre situation</h2>
+    </div>
+    <div class="contact-grid">
+      <form class="contact-form reveal" onsubmit="return handleSubmit(event)">
+        <div class="form-field">
+          <label for="nom">Nom</label>
+          <input type="text" id="nom" name="nom" placeholder="Votre nom complet" required>
+        </div>
+        <div class="form-field">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" placeholder="votre@email.com" required>
+        </div>
+        <div class="form-field">
+          <label for="objet">Objet</label>
+          <input type="text" id="objet" name="objet" placeholder="L'objet de votre demande">
+        </div>
+        <div class="form-field">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" placeholder="Décrivez brièvement votre situation..." required></textarea>
+        </div>
+        <button type="submit" class="btn-submit">Envoyer</button>
+      </form>
+      <div class="contact-info reveal">
+        <div class="contact-info-block">
+          <h3>Cabinet</h3>
+          <p>
+            <strong>Maître Jonathan Prebon</strong><br>
+            Avocat au Barreau<br><br>
+            12, rue de la République<br>
+            57000 Metz, France
+          </p>
+        </div>
+        <div class="contact-info-block">
+          <h3>Coordonnées</h3>
+          <p>
+            <strong>Téléphone</strong><br>
+            +33 (0)3 87 00 00 00<br><br>
+            <strong>Email</strong><br>
+            contact@prebon-avocat.fr
+          </p>
+        </div>
+        <div class="contact-info-block">
+          <h3>Horaires</h3>
+          <p>
+            Lundi — Vendredi<br>
+            9h00 — 18h00<br><br>
+            Sur rendez-vous uniquement
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-top">
+        <a href="#" class="footer-brand">Maître Jonathan Prebon</a>
+        <div class="footer-links">
+          <a href="#about">À propos</a>
+          <a href="#domaines">Expertise</a>
+          <a href="#clientele">Clientèle</a>
+          <a href="#contact">Contact</a>
+          <a href="#">Mentions légales</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        &copy; 2026 Cabinet Jonathan Prebon &mdash; Tous droits réservés
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ── Sticky header ── */
+const header = document.getElementById('siteHeader');
+window.addEventListener('scroll', () => {
+  header.classList.toggle('scrolled', window.scrollY > 40);
+}, { passive: true });
+
+/* ── Active nav tracking ── */
+const sections = document.querySelectorAll('section[id]');
+const navLinks = document.querySelectorAll('.header-nav a');
+const activeObs = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const id = entry.target.id;
+      navLinks.forEach(a => {
+        a.classList.toggle('active', a.getAttribute('href') === '#' + id);
+      });
+    }
+  });
+}, { threshold: 0.3, rootMargin: '-20% 0px -50% 0px' });
+sections.forEach(s => activeObs.observe(s));
+
+/* ── Mobile menu ── */
+const menuToggle = document.getElementById('menuToggle');
+const headerNav = document.getElementById('headerNav');
+const navOverlay = document.getElementById('navOverlay');
+
+function toggleNav() {
+  headerNav.classList.toggle('open');
+  navOverlay.classList.toggle('active');
+  document.body.style.overflow = headerNav.classList.contains('open') ? 'hidden' : '';
+}
+menuToggle.addEventListener('click', toggleNav);
+navOverlay.addEventListener('click', toggleNav);
+headerNav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+  if (headerNav.classList.contains('open')) toggleNav();
+}));
+
+/* ── Scroll reveal ── */
+const animated = document.querySelectorAll('.reveal, .reveal-left, .reveal-scale, .stagger, .pills, .contact-form, .contact-info, .site-footer');
+const revealObs = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('visible'); revealObs.unobserve(e.target); }
+  });
+}, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
+animated.forEach(el => revealObs.observe(el));
+
+/* ── Button glow cursor ── */
+document.querySelectorAll('.btn-primary, .btn-submit').forEach(btn => {
+  btn.addEventListener('mousemove', (e) => {
+    const r = btn.getBoundingClientRect();
+    btn.style.setProperty('--mouse-x', ((e.clientX - r.left) / r.width * 100) + '%');
+    btn.style.setProperty('--mouse-y', ((e.clientY - r.top) / r.height * 100) + '%');
+  });
+});
+
+/* ── Hero canvas ── */
+(function() {
+  const canvas = document.getElementById('heroCanvas');
+  const ctx = canvas.getContext('2d');
+  let w, h, time = 0, animId;
+
+  function resize() {
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    const rect = canvas.parentElement.getBoundingClientRect();
+    w = rect.width; h = rect.height;
+    canvas.width = w * dpr; canvas.height = h * dpr;
+    canvas.style.width = w + 'px'; canvas.style.height = h + 'px';
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  }
+
+  function draw() {
+    time += 0.002;
+    ctx.fillStyle = '#0D1B2A';
+    ctx.fillRect(0, 0, w, h);
+
+    const orbs = [
+      { x: w * 0.25 + Math.sin(time * 0.6) * w * 0.07,
+        y: h * 0.35 + Math.cos(time * 0.4) * h * 0.05,
+        r: Math.min(w, h) * 0.5,
+        color: 'rgba(59, 95, 138, 0.10)' },
+      { x: w * 0.75 + Math.cos(time * 0.5) * w * 0.05,
+        y: h * 0.65 + Math.sin(time * 0.7) * h * 0.07,
+        r: Math.min(w, h) * 0.45,
+        color: 'rgba(184, 161, 107, 0.045)' },
+      { x: w * 0.5 + Math.sin(time * 0.35) * w * 0.09,
+        y: h * 0.18 + Math.cos(time * 0.25) * h * 0.04,
+        r: Math.min(w, h) * 0.38,
+        color: 'rgba(214, 228, 240, 0.04)' },
+    ];
+
+    orbs.forEach(orb => {
+      const grad = ctx.createRadialGradient(orb.x, orb.y, 0, orb.x, orb.y, orb.r);
+      grad.addColorStop(0, orb.color);
+      grad.addColorStop(1, 'rgba(13, 27, 42, 0)');
+      ctx.fillStyle = grad;
+      ctx.fillRect(0, 0, w, h);
+    });
+
+    // Grain — sparse for performance
+    const imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+    const d = imgData.data;
+    for (let i = 0; i < d.length; i += 20) {
+      const n = (Math.random() - 0.5) * 10;
+      d[i] += n; d[i+1] += n; d[i+2] += n;
+    }
+    ctx.putImageData(imgData, 0, 0);
+
+    animId = requestAnimationFrame(draw);
+  }
+
+  resize();
+  draw();
+  window.addEventListener('resize', resize);
+
+  const heroEl = document.getElementById('hero');
+  const heroObs = new IntersectionObserver(([entry]) => {
+    if (entry.isIntersecting) { if (!animId) draw(); }
+    else { cancelAnimationFrame(animId); animId = null; }
+  }, { threshold: 0 });
+  heroObs.observe(heroEl);
+})();
+
+/* ── Form handler ── */
+function handleSubmit(e) {
+  e.preventDefault();
+  const btn = e.target.querySelector('.btn-submit');
+  const orig = btn.textContent;
+  btn.textContent = 'Message envoyé';
+  btn.style.background = 'var(--gold-accent)';
+  btn.style.color = '#fff';
+  btn.style.pointerEvents = 'none';
+  setTimeout(() => {
+    btn.textContent = orig;
+    btn.style.background = '';
+    btn.style.color = '';
+    btn.style.pointerEvents = '';
+    e.target.reset();
+  }, 3000);
+  return false;
+}
+</script>
+</body>
+</html>
