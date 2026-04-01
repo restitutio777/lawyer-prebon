@@ -138,11 +138,20 @@ img { max-width: 100%; display: block; }
   justify-content: center; text-align: center; overflow: hidden;
   background: var(--navy);
 }
-.hero-bg { position: absolute; inset: 0; z-index: 0; }
-.hero-bg canvas { width: 100%; height: 100%; display: block; }
+.hero-bg {
+  position: absolute; inset: 0; z-index: 0;
+  background: url('hero-bg.jpg') center center / cover no-repeat;
+}
+.hero-bg canvas { display: none; }
 
-/* Hero overlays removed — clean navy bg */
-.hero::after, .hero::before { display: none; }
+/* Photo overlay — dark enough for text, warm tone */
+.hero::after {
+  content: ''; position: absolute; inset: 0; z-index: 1;
+  background:
+    linear-gradient(180deg, rgba(13,27,42,.55) 0%, rgba(13,27,42,.35) 40%, rgba(13,27,42,.6) 70%, rgba(13,27,42,.92) 100%),
+    linear-gradient(90deg, rgba(13,27,42,.7) 0%, rgba(13,27,42,.3) 40%, transparent 65%);
+  pointer-events: none;
+}
 
 /* ── Architectural background illustrations ── */
 .arch-bg {
@@ -796,7 +805,7 @@ section { padding: var(--section-pad) 0; }
 
 <!-- Hero -->
 <section class="hero" id="hero">
-  <div class="hero-bg"><canvas id="heroCanvas"></canvas></div>
+  <div class="hero-bg"></div>
 
   <!-- Pont de Paris — elegant bridge outline -->
   <div class="arch-bg arch-hero">
@@ -1304,72 +1313,6 @@ document.querySelectorAll('.btn-primary, .btn-submit').forEach(btn => {
   });
 });
 
-/* ── Hero canvas ── */
-(function() {
-  const canvas = document.getElementById('heroCanvas');
-  const ctx = canvas.getContext('2d');
-  let w, h, time = 0, animId;
-
-  function resize() {
-    const dpr = Math.min(window.devicePixelRatio || 1, 2);
-    const rect = canvas.parentElement.getBoundingClientRect();
-    w = rect.width; h = rect.height;
-    canvas.width = w * dpr; canvas.height = h * dpr;
-    canvas.style.width = w + 'px'; canvas.style.height = h + 'px';
-    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-  }
-
-  function draw() {
-    time += 0.002;
-    ctx.fillStyle = '#0D1B2A';
-    ctx.fillRect(0, 0, w, h);
-
-    const orbs = [
-      { x: w * 0.25 + Math.sin(time * 0.6) * w * 0.07,
-        y: h * 0.35 + Math.cos(time * 0.4) * h * 0.05,
-        r: Math.min(w, h) * 0.5,
-        color: 'rgba(59, 95, 138, 0.10)' },
-      { x: w * 0.75 + Math.cos(time * 0.5) * w * 0.05,
-        y: h * 0.65 + Math.sin(time * 0.7) * h * 0.07,
-        r: Math.min(w, h) * 0.45,
-        color: 'rgba(184, 161, 107, 0.045)' },
-      { x: w * 0.5 + Math.sin(time * 0.35) * w * 0.09,
-        y: h * 0.18 + Math.cos(time * 0.25) * h * 0.04,
-        r: Math.min(w, h) * 0.38,
-        color: 'rgba(214, 228, 240, 0.04)' },
-    ];
-
-    orbs.forEach(orb => {
-      const grad = ctx.createRadialGradient(orb.x, orb.y, 0, orb.x, orb.y, orb.r);
-      grad.addColorStop(0, orb.color);
-      grad.addColorStop(1, 'rgba(13, 27, 42, 0)');
-      ctx.fillStyle = grad;
-      ctx.fillRect(0, 0, w, h);
-    });
-
-    // Grain — sparse for performance
-    const imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
-    const d = imgData.data;
-    for (let i = 0; i < d.length; i += 20) {
-      const n = (Math.random() - 0.5) * 10;
-      d[i] += n; d[i+1] += n; d[i+2] += n;
-    }
-    ctx.putImageData(imgData, 0, 0);
-
-    animId = requestAnimationFrame(draw);
-  }
-
-  resize();
-  draw();
-  window.addEventListener('resize', resize);
-
-  const heroEl = document.getElementById('hero');
-  const heroObs = new IntersectionObserver(([entry]) => {
-    if (entry.isIntersecting) { if (!animId) draw(); }
-    else { cancelAnimationFrame(animId); animId = null; }
-  }, { threshold: 0 });
-  heroObs.observe(heroEl);
-})();
 
 /* ── Form handler ── */
 function handleSubmit(e) {
